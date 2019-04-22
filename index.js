@@ -3,6 +3,12 @@ module.exports = function date(dateStr) {
 	const timeType = ['years', 'months', 'days', 'hours', 'minutes'];
 
 	return {
+	    get value() {
+	      var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+	      var formattedDate = date.toLocaleDateString('ru-RU', options);
+	      formattedDate = formattedDate.replace(/(\d+)\.(\d+)\.(\d+), (\d+:\d)/, '$3-$2-$1 $4');
+	      return formattedDate;
+	    },
 
 		add: function (num, str) {
 			if ( Number.isNaN(num) || num < 0 || timeType.indexOf(str) === -1 ) {
