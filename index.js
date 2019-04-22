@@ -4,10 +4,10 @@ module.exports = function date(dateStr) {
 
 	return {
 	    get value() {
-	      var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-	      var formattedDate = date.toLocaleDateString('ru-RU', options);
-	      formattedDate = formattedDate.replace(/(\d+)\.(\d+)\.(\d+), (\d+:\d)/, '$3-$2-$1 $4');
-	      return formattedDate;
+			const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', hour12: false, minute: 'numeric' };
+			let formattedDate = date.toLocaleDateString('en-GB', options);
+			formattedDate = formattedDate.replace(/(\d+).(\d+).(\d+), (\d+:\d)/, '$3-$1-$2 $4');
+			return formattedDate;
 	    },
 
 		add: function (num, str) {
